@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _playerRigidBody;
     private CapsuleCollider _capsuleCollider;
 
+    private float _startingMovementSpeed, _startingJumpForce;
+
     private float _horizontalInput, _verticalInput;
     private Vector3 _movementDirection;
 
@@ -51,6 +53,8 @@ public class PlayerController : MonoBehaviour
         _playerRigidBody.freezeRotation = true;
 
         _playerHeight = _capsuleCollider.height / 2.2f;
+        _startingMovementSpeed = _accelerationForce;
+        _startingJumpForce = _jumpForce;
     }
 
     private void Update()
@@ -175,7 +179,7 @@ public class PlayerController : MonoBehaviour
         OnPlayerGrounded?.Invoke();
 
     }
-
+    #region Helper Functions
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, _playerHeight / 2f + 0.2f, _groundLayer);
@@ -189,4 +193,26 @@ public class PlayerController : MonoBehaviour
     {
         return _isSliding;
     }
+
+    public void SetMovementSpeed(float speed, float duration)
+    {
+        _accelerationForce += speed;
+        Invoke(nameof(ResetMovementSpeed), duration);
+    }
+    private void ResetMovementSpeed()
+    {
+        _accelerationForce = _startingMovementSpeed;
+    }
+
+    public void SetJumpForce(float force, float duration)
+    {
+        _jumpForce += force;
+        Invoke(nameof(ResetJumpForce), duration);
+    }
+    private void ResetJumpForce()
+    {
+        _jumpForce = _startingJumpForce;
+    }
+    #endregion
+
 }
