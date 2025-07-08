@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public event Action OnPlayerJumped;
     public event Action OnPlayerGrounded;
-
+    public event Action<PlayerState> OnPlayerStateChanged;
     private StateController _stateController;
     private Rigidbody _playerRigidBody;
     private CapsuleCollider _capsuleCollider;
@@ -115,6 +115,7 @@ public class PlayerController : MonoBehaviour
         if (newState != currentState)
         {
             _stateController.ChangeState(newState);
+            OnPlayerStateChanged?.Invoke(newState);
         }
 
     }
