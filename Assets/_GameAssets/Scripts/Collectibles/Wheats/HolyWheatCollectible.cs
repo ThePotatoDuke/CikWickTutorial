@@ -5,7 +5,7 @@ public class HolyWheatCollectible : MonoBehaviour, ICollectible
 {
     [SerializeField] private WheatDesignSO _wheatDesignSO;
     [SerializeField] private PlayerController _playercontroller;
-    [SerializeField] private PlayerStateUi _playerStateUI;
+    [SerializeField] private PlayerStateUI _playerStateUI;
 
     private RectTransform _playerBoosterTransform;
     private Image _playerBoosterImage;
@@ -17,7 +17,7 @@ public class HolyWheatCollectible : MonoBehaviour, ICollectible
     public void Collect()
     {
         _playercontroller.SetJumpForce(_wheatDesignSO.IncreaseDecreaseMultiplier, _wheatDesignSO.ResetBoostDuration);
-        _playerStateUI.PlayBoosterUIAnimations(_playerBoosterTransform, _playerBoosterImage, _playerStateUI.GetHolyBoosterWjeatImage, _wheatDesignSO.ActiveSprite,
+        _playerStateUI.PlayBoosterUIAnimations(_playerBoosterTransform, _playerBoosterImage, _playerStateUI.GetHolyBoosterWheatImage, _wheatDesignSO.ActiveSprite,
         _wheatDesignSO.PassiveSprite, _wheatDesignSO.ActiveWheatSprite, _wheatDesignSO.PassiveWheatSprite, _wheatDesignSO.ResetBoostDuration);
         Destroy(gameObject);
     }

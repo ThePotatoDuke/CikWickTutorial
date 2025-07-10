@@ -1,18 +1,18 @@
-using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStateUi : MonoBehaviour
+public class PlayerStateUI : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private RectTransform _playerWalkingTransform;
     [SerializeField] private RectTransform _playerSlidingTransform;
+
+
     [SerializeField] private RectTransform _boosterSpeedTransform;
     [SerializeField] private RectTransform _boosterJumpTransform;
-
     [SerializeField] private RectTransform _boosterSlowTransform;
 
     [Header("Images")]
@@ -36,9 +36,9 @@ public class PlayerStateUi : MonoBehaviour
     public RectTransform GetBoosterJumpTransform => _boosterJumpTransform;
     public RectTransform GetBoosterSlowTransform => _boosterSlowTransform;
 
-    public Image GetGoldBoosterWjeatImage => _goldBoosterWheatImage;
-    public Image GetHolyBoosterWjeatImage => _holyBoosterWheatImage;
-    public Image GetHolyRottenWheatImage => _rottenBoosterWheatImage;
+    public Image GetGoldBoosterWheatImage => _goldBoosterWheatImage;
+    public Image GetHolyBoosterWheatImage => _holyBoosterWheatImage;
+    public Image GetRottenWheatImage => _rottenBoosterWheatImage;
 
     private Image _playerWalkingImage;
     private Image _playerSlidingImage;

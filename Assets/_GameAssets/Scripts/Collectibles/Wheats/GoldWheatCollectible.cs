@@ -5,7 +5,7 @@ public class GoldWheatCollectible : MonoBehaviour, ICollectible
 {
     [SerializeField] private WheatDesignSO _wheatDesignSO;
     [SerializeField] private PlayerController _playercontroller;
-    [SerializeField] private PlayerStateUi _playerStateUI;
+    [SerializeField] private PlayerStateUI _playerStateUI;
     private RectTransform _playerBoosterTransform;
     private Image _playerBoosterImage;
     private void Awake()
@@ -16,7 +16,8 @@ public class GoldWheatCollectible : MonoBehaviour, ICollectible
     public void Collect()
     {
         _playercontroller.SetMovementSpeed(_wheatDesignSO.IncreaseDecreaseMultiplier, _wheatDesignSO.ResetBoostDuration);
-        _playerStateUI.PlayBoosterUIAnimations(_playerBoosterTransform, _playerBoosterImage, _playerStateUI.GetGoldBoosterWjeatImage, _wheatDesignSO.ActiveSprite,
+
+        _playerStateUI.PlayBoosterUIAnimations(_playerBoosterTransform, _playerBoosterImage, _playerStateUI.GetGoldBoosterWheatImage, _wheatDesignSO.ActiveSprite,
         _wheatDesignSO.PassiveSprite, _wheatDesignSO.ActiveWheatSprite, _wheatDesignSO.PassiveWheatSprite, _wheatDesignSO.ResetBoostDuration);
         Destroy(gameObject);
     }
