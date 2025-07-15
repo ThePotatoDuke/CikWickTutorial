@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1089652806207520788}
   - component: {fileID: 7612657181904323873}
   - component: {fileID: 2565406608519656546}
-  m_Layer: 0
+  - component: {fileID: 1571805815881276387}
+  m_Layer: 6
   m_Name: WallStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7a668623c958050488330bfd4f736d25, type: 2}
+  - {fileID: 2100000, guid: 558dd04b128aa6c4f906cd43ab943ae6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -103,3 +104,25 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 6.0000005, z: 0.002}
   m_TimeToStationary: 0.5
+--- !u!64 &1571805815881276387
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4627109835390960448}
+  m_Material: {fileID: 13400000, guid: 4fc1612c8cdc8734eba71608823c9461, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7142015940480178959, guid: 97c6d0a4bb9a65242b821cbb4f172a59, type: 3}

@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7083946238418279119}
   - component: {fileID: 5117122060223115791}
   - component: {fileID: 8422250045819014970}
-  m_Layer: 0
+  - component: {fileID: 2795789897674489194}
+  m_Layer: 6
   m_Name: WallWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,8 +65,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7a668623c958050488330bfd4f736d25, type: 2}
-  - {fileID: 2100000, guid: f2f5416756597834ca5e301434a8d05d, type: 2}
+  - {fileID: 2100000, guid: 558dd04b128aa6c4f906cd43ab943ae6, type: 2}
+  - {fileID: 2100000, guid: 178c399b95fbc514e9bf21ae26f645e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87,3 +88,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2795789897674489194
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8556745452846760858}
+  m_Material: {fileID: 13400000, guid: 4fc1612c8cdc8734eba71608823c9461, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5788985401250361358, guid: cab97385a5c807c4b9900f589823c70a, type: 3}

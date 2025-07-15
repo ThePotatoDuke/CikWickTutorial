@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8596055260821806133}
   - component: {fileID: 7048286475750846733}
   - component: {fileID: 7143444145999342655}
-  m_Layer: 0
+  - component: {fileID: 47712488324564552}
+  m_Layer: 6
   m_Name: WallCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7a668623c958050488330bfd4f736d25, type: 2}
+  - {fileID: 2100000, guid: 558dd04b128aa6c4f906cd43ab943ae6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,3 +87,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &47712488324564552
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402323288397365275}
+  m_Material: {fileID: 13400000, guid: 4fc1612c8cdc8734eba71608823c9461, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4281378930606695432, guid: 77eb7a46350477f4693881fb2f81b91c, type: 3}
