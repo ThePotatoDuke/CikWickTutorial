@@ -1,0 +1,46 @@
+using UnityEngine;
+
+public class CatAnimationController : MonoBehaviour
+{
+    [SerializeField]
+    private Animator _catAnimator;
+    private CatStateController _catStateController;
+
+    void Awake()
+    {
+        _catStateController = GetComponent<CatStateController>();
+    }
+
+    void Update()
+    {
+        SetCatAnimtaions();
+    }
+
+    private void SetCatAnimtaions()
+    {
+        var currentCatState = _catStateController.GetCurrentState();
+
+        // Reset all animation states first
+        _catAnimator.SetBool(Consts.CatAnimations.IS_IDLING, false);
+        _catAnimator.SetBool(Consts.CatAnimations.IS_WALKING, false);
+        _catAnimator.SetBool(Consts.CatAnimations.IS_RUNNING, false);
+        _catAnimator.SetBool(Consts.CatAnimations.IS_ATTACKING, false);
+
+        // Then enable only the current one
+        switch (currentCatState)
+        {
+            case CatState.Idle:
+                _catAnimator.SetBool(Consts.CatAnimations.IS_IDLING, true);
+                break;
+            case CatState.Walking:
+                _catAnimator.SetBool(Consts.CatAnimations.IS_WALKING, true);
+                break;
+            case CatState.Running:
+                _catAnimator.SetBool(Consts.CatAnimations.IS_RUNNING, true);
+                break;
+            case CatState.Attacking:
+                _catAnimator.SetBool(Consts.CatAnimations.IS_ATTACKING, true);
+                break;
+        }
+    }
+}

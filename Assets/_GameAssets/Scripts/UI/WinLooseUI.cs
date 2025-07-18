@@ -43,6 +43,13 @@ public class WinLooseUI : MonoBehaviour
         _blackBackgroundObject.SetActive(true);
         _losePopup.SetActive(true);
 
+        // Reset alpha to 0 before fading
+        var color = _blackBackgroundImage.color;
+        _blackBackgroundImage.color = new Color(color.r, color.g, color.b, 0f);
+
+        // Reset popup scale to 0 for animation
+        _winPopupTransform.localScale = Vector3.zero;
+
         _blackBackgroundImage.DOFade(0.8f, _animationDuration).SetEase(Ease.Linear);
         _losePopupTransform.DOScale(1.5f, _animationDuration).SetEase(Ease.OutBack);
     }

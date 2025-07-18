@@ -5,21 +5,43 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
     public static GameManager Instance { get; private set; }
     public event Action<GameState> OnGameStateChanged;
+
     [Header("References")]
-    [SerializeField] private EggCounterUI _eggCounterUI;
-    [SerializeField] private WinLooseUI _winLoseUI;
+    [SerializeField]
+    private EggCounterUI _eggCounterUI;
+
+    [SerializeField]
+    private WinLooseUI _winLoseUI;
+
+    [SerializeField]
+    private CatController _catController;
+
+    [SerializeField]
+    private PlayerHealthUI _playerHealthUI;
 
     [Header("Settings")]
-    [SerializeField] private float _delay;
-    [SerializeField] private int _maxEggCount = 5;
+    [SerializeField]
+    private float _delay;
+
+    [SerializeField]
+    private int _maxEggCount = 5;
     private int _currentEggCount;
     private GameState _currentGameState;
+
     void Start()
     {
         HealthManager.Instance.OnPlayerDeath += HealthManager_OnPlayerDeath;
+        _catController.OnCatCaught += CatController_OnCatCaught;
+    }
+
+    private void CatController_OnCatCaught()
+    {
+        _playerHealthUI.AnimateDamageForAll();
+        CameraShake.Instance.ShakeCamera(2f, 1f);
+
+        StartCoroutine(OnGameOver());
     }
 
     private void HealthManager_OnPlayerDeath()
@@ -31,35 +53,38 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
     }
+
     void OnEnable()
     {
         ChangeGameState(GameState.Play);
     }
+
     public void ChangeGameState(GameState gameState)
     {
         OnGameStateChanged?.Invoke(gameState);
         _currentGameState = gameState;
     }
+
     public void OnEggCollected()
     {
         _currentEggCount++;
         _eggCounterUI.SetEggCounterText(_currentEggCount, _maxEggCount);
         if (_currentEggCount == _maxEggCount)
         {
-
             ChangeGameState(GameState.GameOver);
             _winLoseUI.OnGameWin();
 
             _eggCounterUI.SetEggCompleted();
         }
-
     }
+
     private IEnumerator OnGameOver()
     {
         yield return new WaitForSeconds(_delay);
         ChangeGameState(GameState.GameOver);
         _winLoseUI.OnGameLose();
     }
+
     public GameState GetCurrentGameState()
     {
         return _currentGameState;

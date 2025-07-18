@@ -6,7 +6,7 @@ public class FireDamagable : MonoBehaviour, IDamagable
     public void GiveDamage(Rigidbody playerRigidBody, Transform playerVisualTransform)
     {
         HealthManager.Instance.Damage(1);
-        playerRigidBody.AddForce(-playerVisualTransform.forward * _force, ForceMode.Impulse);
+        playerRigidBody.AddForce(-1 * playerVisualTransform.forward * _force, ForceMode.Impulse);
         Destroy(gameObject);
     }
 }
