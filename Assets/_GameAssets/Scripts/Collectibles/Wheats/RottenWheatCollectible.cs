@@ -36,6 +36,8 @@ public class RottenWheatCollectible : MonoBehaviour, ICollectible
             _wheatDesignSO.PassiveWheatSprite,
             _wheatDesignSO.ResetBoostDuration
         );
+        AudioManager.Instance.Play(SoundType.PickupBadSound);
+
         CameraShake.Instance.ShakeCamera(0.5f, 0.5f);
 
         Destroy(gameObject);

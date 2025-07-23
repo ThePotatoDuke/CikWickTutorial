@@ -1,8 +1,6 @@
 using MaskTransitions;
 using TMPro;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LosePopup : MonoBehaviour
@@ -22,17 +20,23 @@ public class LosePopup : MonoBehaviour
 
     void OnEnable()
     {
+        BackgroundMusic.Instance.PlayBackgroundMusic(false);
+        AudioManager.Instance.Play(SoundType.LoseSound);
+
         _timerText.text = _timerUI.GetFinalTime();
 
         _tryAgainButton.onClick.AddListener(OnTryAgainButtonClicked);
         _mainMenuButton.onClick.AddListener(() =>
         {
+            AudioManager.Instance.Play(SoundType.TransitionSound);
+
             TransitionManager.Instance.LoadLevel(Consts.SceneNames.MENU_SCENE);
         });
     }
 
     private void OnTryAgainButtonClicked()
     {
+        AudioManager.Instance.Play(SoundType.TransitionSound);
         TransitionManager.Instance.LoadLevel(Consts.SceneNames.GAME_SCENE);
     }
 }

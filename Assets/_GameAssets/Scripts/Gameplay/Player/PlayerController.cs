@@ -37,6 +37,10 @@ public class PlayerController : MonoBehaviour
     private KeyCode _jumpKey = KeyCode.Space;
 
     [SerializeField]
+    private float _coyoteTime = 0.2f;
+    private float _coyoteTimeCounter;
+
+    [SerializeField]
     private float _jumpForce = 5f;
 
     [SerializeField]
@@ -98,6 +102,15 @@ public class PlayerController : MonoBehaviour
         SetInputs();
         SetStates();
         SetPlayerDrag();
+        bool isGrounded = IsGrounded();
+        if (isGrounded)
+        {
+            _coyoteTimeCounter = _coyoteTime;
+        }
+        else
+        {
+            _coyoteTimeCounter -= Time.deltaTime;
+        }
     }
 
     private void FixedUpdate()
@@ -127,7 +140,6 @@ public class PlayerController : MonoBehaviour
         {
             _isSliding = false;
         }
-
         if (Input.GetKeyDown(_jumpKey))
         {
             _jumpBufferCounter = _jumpBufferTime;
@@ -167,12 +179,13 @@ public class PlayerController : MonoBehaviour
 
     private void HandleBufferedJump()
     {
-        if (_jumpBufferCounter > 0f && _canJump && IsGrounded())
+        if (_jumpBufferCounter > 0f && _coyoteTimeCounter > 0f)
         {
             _canJump = false;
             _jumpBufferCounter = 0f;
             SetPlayerJumping();
             Invoke(nameof(ResetJumping), _jumpCooldown);
+            AudioManager.Instance.Play(SoundType.JumpSound);
         }
     }
 
@@ -239,6 +252,7 @@ public class PlayerController : MonoBehaviour
     private void ResetJumping()
     {
         _canJump = true;
+        _coyoteTimeCounter = 0f;
         OnPlayerGrounded?.Invoke();
     }
 

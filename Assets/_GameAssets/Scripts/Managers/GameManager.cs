@@ -41,12 +41,12 @@ public class GameManager : MonoBehaviour
         _playerHealthUI.AnimateDamageForAll();
         CameraShake.Instance.ShakeCamera(2f, 1f);
 
-        StartCoroutine(OnGameOver());
+        StartCoroutine(OnGameOver(true));
     }
 
     private void HealthManager_OnPlayerDeath()
     {
-        StartCoroutine(OnGameOver());
+        StartCoroutine(OnGameOver(false));
     }
 
     private void Awake()
@@ -56,7 +56,8 @@ public class GameManager : MonoBehaviour
 
     void OnEnable()
     {
-        ChangeGameState(GameState.Play);
+        ChangeGameState(GameState.Cutscene);
+        BackgroundMusic.Instance.PlayBackgroundMusic(true);
     }
 
     public void ChangeGameState(GameState gameState)
@@ -78,11 +79,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator OnGameOver()
+    private IEnumerator OnGameOver(bool isCatCaught)
     {
         yield return new WaitForSeconds(_delay);
         ChangeGameState(GameState.GameOver);
         _winLoseUI.OnGameLose();
+        if (isCatCaught)
+        {
+            AudioManager.Instance.Play(SoundType.CatSound);
+        }
     }
 
     public GameState GetCurrentGameState()
