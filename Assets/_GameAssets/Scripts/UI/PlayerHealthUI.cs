@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class PlayerHealthUI : MonoBehaviour
 {
-    [Header("Refeerences")]
+    [Header("References")]
     [SerializeField] private Image[] _playerHealthImages;
     [Header("Images")]
-    [SerializeField] private Sprite _playerHealtySprite;
-    [SerializeField] private Sprite _playerUnhealtySprite;
+    [SerializeField] private Sprite _playerHealthySprite;
+    [SerializeField] private Sprite _playerUnhealthySprite;
     private RectTransform[] _playerHealthTransforms;
 
     [Header("Settings")]
@@ -29,7 +29,7 @@ public class PlayerHealthUI : MonoBehaviour
     {
         for (int i = 0; i < _playerHealthImages.Length; i++)
         {
-            if (_playerHealthImages[i].sprite == _playerHealtySprite)
+            if (_playerHealthImages[i].sprite == _playerHealthySprite)
             {
                 AnimateDamageSprite(_playerHealthImages[i], _playerHealthTransforms[i]);
                 break;
@@ -48,7 +48,7 @@ public class PlayerHealthUI : MonoBehaviour
     {
         activeImageTransfrom.DOScale(0f, _scaleDuration).SetEase(Ease.InBack).OnComplete(() =>
         {
-            activeImage.sprite = _playerUnhealtySprite;
+            activeImage.sprite = _playerUnhealthySprite;
             activeImageTransfrom.DOScale(1f, _scaleDuration).SetEase(Ease.OutBack);
         });
     }
